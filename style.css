@@ -1,0 +1,51 @@
+:root{
+  --bg:#071016;
+  --card:#071a1f;
+  --neon:#00ff99;
+  --muted:#8abdb3;
+  --accent:#00d68f;
+  --glass: rgba(255,255,255,0.03);
+  --mono: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--mono);background:linear-gradient(180deg,var(--bg),#012026);color:#cfeee3}
+.topbar{display:flex;align-items:center;gap:16px;padding:14px 20px;background:linear-gradient(90deg,rgba(0,0,0,0.2),rgba(0,0,0,0.05));border-bottom:1px solid rgba(0,255,153,0.06)}
+.topbar .logo img{width:48px;height:48px;filter:drop-shadow(0 4px 12px rgba(0,255,153,0.06))}
+.topbar h1{font-size:18px;margin:0;font-weight:600;color:var(--neon)}
+.content{display:grid;grid-template-columns:1fr;gap:18px;max-width:1000px;margin:20px auto;padding:0 16px}
+.panel{background:var(--card);padding:16px;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.6);border:1px solid rgba(0,255,153,0.04)}
+.controls{display:flex;gap:8px;margin-top:8px;align-items:center}
+button{background:var(--neon);border:none;color:#012;padding:8px 12px;border-radius:6px;font-weight:600;cursor:pointer}
+button:disabled{opacity:0.5;cursor:not-allowed}
+.status{margin-top:8px;color:var(--muted)}
+.phase{font-size:20px;color:var(--neon);font-weight:700}
+.timer{font-size:40px;margin-top:6px;color:white}
+.small{color:var(--muted);margin-top:8px;font-size:13px}
+.footer{max-width:1000px;margin:24px auto;padding:8px 16px;color:var(--muted);text-align:center}
+.switch{display:inline-flex;align-items:center;gap:8px;color:var(--muted)}
+canvas{width:100%;height:200px;background:linear-gradient(180deg,rgba(0,0,0,0.1),rgba(0,0,0,0));border-radius:6px;border:1px solid rgba(0,255,153,0.04)}
+code{background:rgba(255,255,255,0.02);padding:2px 6px;border-radius:4px;color:var(--neon)}
+@media(min-width:900px){.content{grid-template-columns:1fr 1fr}}
+.phase-selector {
+  background: rgba(0,255,153,0.03);
+  border: 1px solid rgba(0,255,153,0.1);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.phase-selector label {
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+}
+#savePhases {
+  margin-top: 10px;
+  background: var(--neon);
+  color: #012;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
