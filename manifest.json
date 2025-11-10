@@ -1,0 +1,8 @@
+{
+  "name": "LifeBreath Dashboard",
+  "short_name": "LifeBreath",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#071016",
+  "theme_color": "#00ff99"
+}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LifeBreath AI — Dashboard (v2)</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo"><img src="assets/lifebreath_logo.png" alt="LifeBreath logo"></div>
+    <h1>LifeBreath AI — Dashboard (v2)</h1>
+    <nav><a id="apiStatus" href="#">API: unknown</a></nav>
+  </header>
+
+  <main class="content">
+    <section class="panel">
+      <h2>Real-time Waveform (Microphone)</h2>
+      <canvas id="wave" width="900" height="200"></canvas>
+      <div class="controls">
+        <button id="connectMic">Connect Microphone</button>
+        <button id="startRec" disabled>Record & Send (5s)</button>
+        <label class="switch"><input id="liveSend" type="checkbox"><span>Auto Send</span></label>
+      </div>
+      <div id="status" class="status">Idle</div>
+    </section>
+
+    <section class="panel">
+      <h2>🌬️ 8-Phase Prāṇāyāma Timer</h2>
+      <div id="pranayama">
+        <div id="phaseName" class="phase">—</div>
+        <div id="phaseTimer" class="timer">00:00</div>
+        <button id="startCycle">Start Cycle</button>
+        <button id="stopCycle" disabled>Stop</button>
+      </div>
+
+      <hr>
+
+      <h3>Select Phases</h3>
+      <form id="phaseSelector" class="phase-selector">
+        <label><input type="checkbox" checked value="Pūraka (Inhale)"> 1️⃣ Pūraka — Inhale</label><br>
+        <label><input type="checkbox" checked value="Antar Kumbhaka (Hold)"> 2️⃣ Antar Kumbhaka — Internal Hold</label><br>
+        <label><input type="checkbox" checked value="Rechaka (Exhale)"> 3️⃣ Rechaka — Exhale</label><br>
+        <label><input type="checkbox" checked value="Bāhya Kumbhaka (Hold)"> 4️⃣ Bāhya Kumbhaka — External Hold</label><br>
+        <label><input type="checkbox" checked value="Re-Pūraka (Re-Inhale)"> 5️⃣ Re-Pūraka — Re-Inhale</label><br>
+        <label><input type="checkbox" checked value="Re-Antar Kumbhaka (Re-Hold)"> 6️⃣ Re-Antar Kumbhaka — Re-Hold</label><br>
+        <label><input type="checkbox" checked value="Re-Rechaka (Re-Exhale)"> 7️⃣ Re-Rechaka — Re-Exhale</label><br>
+        <label><input type="checkbox" checked value="Re-Bāhya Kumbhaka (Re-Hold)"> 8️⃣ Re-Bāhya Kumbhaka — Re-Hold</label><br>
+        <button type="button" id="savePhases">Save Selection</button>
+      </form>
+
+      <div class="metrics">
+        <div>Breathing rate: <strong id="bpm">—</strong> breaths/min</div>
+        <div>Stress level: <strong id="stress">—</strong> / 100</div>
+        <canvas id="stressBar" width="280" height="24"></canvas>
+        <div style="margin-top:12px;"><canvas id="stressChart" width="400" height="120"></canvas></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Profile</h2>
+      <form id="profileForm" class="profile">
+        <label>Name: <input id="profileName" type="text" placeholder="Your name"></label><br>
+        <label>Age: <input id="profileAge" type="number" min="1" max="120"></label><br>
+        <label>Gender:
+          <select id="profileGender">
+            <option value="">Prefer not to say</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </label><br>
+        <label>Health issues / Notes:<br>
+          <textarea id="profileNotes" rows="3" placeholder="Asthma, hypertension, anxiety..."></textarea>
+        </label><br>
+        <button type="button" id="saveProfile">Save Profile</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Exports & Tools</h2>
+      <button id="downloadCSV">Download Cohort CSV</button>
+      <button id="openReports">Open Reports Folder (server)</button>
+      <div class="small">Note: downloads call your API at <code>https://api.breathanalyzer.in</code></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© 2025 LifeBreath AI • <a href="https://www.breathanalyzer.in" target="_blank">breathanalyzer.in</a></div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
